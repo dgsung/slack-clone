@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  var Team = sequelize.define("Team", {
+  var Team = sequelize.define("team", {
     name: {
       type: DataTypes.STRING,
       unique: true
@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Team.associate = function(models) {
-    Team.belongsToMany(models.User, {
+    Team.belongsToMany(models.user, {
       through: "member",
       foreignKey: "teamId"
     });
-    Team.belongsTo(models.User, {
+    Team.belongsTo(models.user, {
       foreignKey: "owner"
     });
   };

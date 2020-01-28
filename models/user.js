@@ -1,22 +1,22 @@
 module.exports = (sequelize, DataTypes) => {
-    var User = sequelize.define('User', {
-      name: {
-         type : DataTypes.STRING,
-         unique: true
-        },
-      email : {
-          type: DataTypes.STRING,
-          unique: true
-        },
-      password: DataTypes.STRING
+  var User = sequelize.define("user", {
+    name: {
+      type: DataTypes.STRING,
+      unique: true
+    },
+    email: {
+      type: DataTypes.STRING,
+      unique: true
+    },
+    password: DataTypes.STRING
+  });
+
+  User.associate = function(models) {
+    User.belongsToMany(models.team, {
+      through: "member",
+      foreignKey: "userId"
     });
-  
-    User.associate = function(models) {
-      User.belongsToMany(models.Team, {
-          through: 'member',
-          foreignKey: 'userId'
-      });
-    };
-  
-    return User;
   };
+
+  return User;
+};

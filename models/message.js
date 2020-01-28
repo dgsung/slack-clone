@@ -1,16 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
-    var Message = sequelize.define('Message', {
-      text: DataTypes.STRING,
+  var Message = sequelize.define("message", {
+    text: DataTypes.STRING
+  });
+
+  Message.associate = function(models) {
+    Message.belongsTo(models.channel, {
+      foreignKey: "channelId"
     });
-  
-    Message.associate = function(models) {
-      Message.belongsTo(models.Channel, {
-          foreignKey: 'channelId'
-      });
-      Message.belongsTo(models.User, {
-        foreignKey: 'userId'
+    Message.belongsTo(models.user, {
+      foreignKey: "userId"
     });
-    };
-  
-    return Message;
   };
+
+  return Message;
+};
