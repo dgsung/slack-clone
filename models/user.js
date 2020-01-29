@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       through: "member",
       foreignKey: "userId"
     });
+    User.belongsToMany(models.channel, {
+      through: "channel_member",
+      foreignKey: "userId"
+    });
   };
 
   return User;

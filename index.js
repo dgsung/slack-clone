@@ -1,10 +1,14 @@
 import express from "express";
-import { ApolloServer } from "apollo-server-express";
+import { ApolloServer, graphqlExpress } from "apollo-server-express";
 import typeDefs from "./schema";
 import resolvers from "./resolvers";
 import models from "./models";
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: { models, user: { id: 10 } }
+});
 
 const app = express();
 server.applyMiddleware({ app });

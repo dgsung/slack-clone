@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     Channel.belongsTo(models.team, {
       foreignKey: "teamId"
     });
+    Channel.belongsToMany(models.user, {
+      through: "member",
+      foreignKey: "channelId"
+    });
   };
 
   return Channel;
