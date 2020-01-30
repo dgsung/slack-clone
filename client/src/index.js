@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Routes from "./routes";
+import "semantic-ui-css/semantic.min.css";
 import * as serviceWorker from "./serviceWorker";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";

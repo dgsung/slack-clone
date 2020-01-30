@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./Home";
-import About from "./About";
+import Register from "./Register";
 import Users from "./Users";
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/register">Register</Link>
             </li>
             <li>
               <Link to="/users">Users</Link>
@@ -21,8 +21,8 @@ export default function App() {
           </ul>
         </nav>
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/register">
+            <Register />
           </Route>
           <Route path="/users">
             <Users />
