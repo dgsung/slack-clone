@@ -2,13 +2,28 @@ module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define("user", {
     name: {
       type: DataTypes.STRING,
-      unique: true
+      unique: true,
+      validate: {
+        isAlphanumeric: {
+          args: true,
+          msg: "The username needs to be only letters and numbers"
+        },
+        len: [2, 25]
+      }
     },
     email: {
       type: DataTypes.STRING,
-      unique: true
+      unique: true,
+      validate: {
+        isEmail: {
+          args: true,
+          msg: "Invalid email"
+        }
+      }
     },
-    password: DataTypes.STRING
+    password: {
+      type: DataTypes.STRING
+    }
   });
 
   User.associate = function(models) {

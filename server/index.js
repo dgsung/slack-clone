@@ -3,6 +3,7 @@ import { ApolloServer, graphqlExpress } from "apollo-server-express";
 import typeDefs from "./schema";
 import resolvers from "./resolvers";
 import models from "./models";
+import cors from "cors";
 
 const server = new ApolloServer({
   typeDefs,
@@ -11,6 +12,7 @@ const server = new ApolloServer({
 });
 
 const app = express();
+app.use(cors("*"));
 server.applyMiddleware({ app });
 
 models.sequelize.sync().then(x => {
